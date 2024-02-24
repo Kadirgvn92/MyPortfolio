@@ -1,18 +1,15 @@
 ﻿
-@model List<TblFeature>
+@model TblFeature
 
 <header id="home" class="header">
     <div class="overlay"></div>
     <div class="header-content container">
-        @foreach(var item in Model)
-        {
             <h1 class="header-title">
-                <span class="up">@item.Header</span>
-                <span class="down">@item.NameSurname</span>
+                <span class="up">@Model.Header</span>
+                <span class="down">@Model.NameSurname</span>
             </h1>
-            <p class="header-subtitle">@item.Title</p>
+            <p class="header-subtitle">@Model.Title</p>
 
             <button class="btn btn-primary">Projelerime Göz Atın..</button>
-        }
     </div>
 </header>
