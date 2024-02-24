@@ -1,0 +1,24 @@
+﻿@model List<TblService>
+
+<section class="section" id="service">
+    <div class="container text-center">
+        <p class="section-subtitle">Neler Sunuyorum ?</p>
+        <h6 class="section-title mb-6">Hizmetlerim</h6>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="@item.ServiceIcon"  class="icon">
+                            <h6 class="title">@item.Title</h6>
+                            <p class="subtitle">
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

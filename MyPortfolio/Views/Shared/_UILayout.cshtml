@@ -1,0 +1,24 @@
+﻿
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Html.PartialAsync("~/Views/LayoutPartial/_HeaderPartial.cshtml")
+
+<body data-spy="scroll" data-target=".navbar" data-offset="20" id="home">
+
+    @await Html.PartialAsync("~/Views/LayoutPartial/_NavbarPartial.cshtml")
+
+    @RenderBody()
+
+    @await Html.PartialAsync("~/Views/LayoutPartial/_FooterPartial.cshtml")
+
+    @await Html.PartialAsync("~/Views/LayoutPartial/_ScriptPartial.cshtml")
+
+</body>
+
+</html> 
