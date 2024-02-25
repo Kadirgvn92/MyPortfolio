@@ -16,4 +16,28 @@ public class AboutController : Controller
         var values = _dbMyPortfolioContext.TblAbouts.ToList();
         return View(values);
     }
+    [HttpGet]
+    public IActionResult UpdateAbout(int id)
+    {
+        var values = _dbMyPortfolioContext.TblAbouts.FirstOrDefault(x => x.AboutId == id);
+        return View(values);
+    }
+    [HttpPost]
+    public IActionResult UpdateAbout(TblAbout model)
+    {
+        var values = _dbMyPortfolioContext.TblAbouts.FirstOrDefault(x => x.AboutId == model.AboutId);
+
+        if (values != null)
+        {
+            values.Description = model.Description;
+            values.Title = model.Title;
+            values.Header = model.Header;
+            values.ImageUrl = model.ImageUrl;
+
+            // Değişiklikleri kaydedin
+            _dbMyPortfolioContext.SaveChanges();
+        }
+        return RedirectToAction("Index");
+    }
+
 }
