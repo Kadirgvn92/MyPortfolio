@@ -8,5 +8,6 @@ public class MapProfile : Profile
     public MapProfile()
     {
         CreateMap<UpdateAboutViewModel, TblAbout>().ReverseMap();
+        CreateMap<CreateServiceViewModel, TblService>().ReverseMap();
     }
 }
