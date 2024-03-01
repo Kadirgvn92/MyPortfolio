@@ -1,0 +1,71 @@
+﻿
+@model List<TblContact>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="content-wrapper">
+    <div class="content">
+        <div class="container-fluid">
+            <br />
+            <h4 class="page-title">Mesaj Kısmı</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Mesaj Bilgileri</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-sub">
+                                Mesaj kısmını bu sayfada güncelleyebilirsiniz.
+                            </div>
+                            <table class="table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Ad Soyad</th>
+                                        <th scope="col">Mesaj</th>
+                                        <th scope="col">Mail Adresi</th>
+                                        <th scope="col">Mesaj Tarihi</th>
+                                        <th scope="col">Durum</th>
+                                        <th scope="col">Sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.NameSurname</td>
+                                            <td>@item.Message</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.SendDate?.Date.ToShortDateString()</td>
+                                            @if(item.IsRead == true)
+                                            {
+                                                <td>
+                                                    <a href="/Contact/ChangeToFalse/@item.ContactId" class="btn btn-toggle bg-gradient-warning">Okundu Olarak İşaretle</a>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td>
+                                                    <a href="/Contact/ChangeToTrue/@item.ContactId" class="btn btn-toggle bg-gradient-success">Okunmadı Olarak İşaretle</a>
+                                                </td>
+                                            }
+                                            <td><a href="/Contact/DeleteContact/@item.ContactId" class="btn btn-danger ">Sil</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
